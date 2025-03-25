@@ -42,7 +42,16 @@ def get_dms():
 
     return jsonify(messages)
 
+@app.route('/user-pairs', methods=['GET'])
+def get_dm_user_pairs():
+    """
+    Get all user pairs that have had direct messages (doesnt matter which user is the sender or recipient)
+    """
+    user_pairs = kapo.get_dm_user_pairs()
+    return jsonify(user_pairs)
+
 
 def register_endpoints(app):
     app.add_url_rule('/messages', 'send_message', send_message, methods=['POST', 'GET'])
     app.add_url_rule('/dms', 'get_dms', get_dms, methods=['GET'])
+    app.add_url_rule('/user-pairs', 'get_dm_user_pairs', get_dm_user_pairs, methods=['GET'])

@@ -62,3 +62,36 @@ def get_dms(sender_id: str,
         message['timestamp'] = message['timestamp'].strftime('%Y-%m-%d %H:%M:%S')  # Format as string
     cursor.close()
     return messages
+
+def get_dm_user_pairs():
+    """
+    Get all user pairs that have had direct messages (user pairs where sender and recipient are the same are treated as the same pair)
+    """
+
+    cursor = conn.cursor(cursor_factory=RealDictCursor)
+    cursor.execute(
+        """
+        SELECT DISTINCT sender_id, sender_name, recipient_id, recipient_name
+        FROM messages.private_messages
+        """
+    )
+    # return in format such as:
+    """
+    [
+    {
+        "sender_id": "sender123",
+        "recipient_id": "recipient456",
+        "sender_name": "Sender Name",
+        "recipient_name": "Recipient Name"
+    },
+    {
+        "sender_id": "sender789",
+        "recipient_id": "recipient101",
+        "sender_name": "Another Sender",
+        "recipient_name": "Another Recipient"
+    }
+    ]
+    """
+    user_pairs = cursor.fetchall()
+    cursor.close()
+    return user_pairs
