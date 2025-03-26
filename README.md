@@ -11,6 +11,6 @@ To run, run following in root container:
 This will create and start the Postgres and KaPo API containers.
 
 # UI
-UI is provided in this repository. Currently, KaPo does not provide a front-end deployment. So just open the index.html file in your client machine.  
+A minimal UI is provided in this repository. Currently, KaPo does not provide a front-end deployment. So just open the index.html file in your client machine.  
 If the backend runs on an external machine, you'll need to alter the URL-s in the script.js file to match that.
 ![image](https://github.com/user-attachments/assets/b45000cf-ff0f-47a4-8557-14650ad7eab3)
