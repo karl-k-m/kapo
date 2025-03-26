@@ -6,7 +6,7 @@ KaPo is meant to be deployed as a docker container.
 
 First, you probably want to change the db credentials to something slightly more secure in `docker-compose.yaml`.
 
-To run, run following in root container:
+To run, run following in project root:
 `docker-compose up`  
 This will create and start the Postgres and KaPo API containers.
 
